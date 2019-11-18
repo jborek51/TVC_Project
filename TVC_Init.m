@@ -55,13 +55,13 @@ SENS.kn_alt = .01;                              %   Altimeter noise constant
 SENS.kn_accel = .05;                            %   Accelerometer noise constant
 
 %%  Controller Settings
-CTRL.k_s = 1;                                   %   Control switch  1 = off  2 = closed-loop  3 = open-loop 
+CTRL.k_s = 2;                                   %   Control switch  1 = off  2 = closed-loop  3 = open-loop 
 CTRL.Kp = .25;                                  %   rad/(m/s) - Proportional gain
 CTRL.Ki = .1;                                   %   rad/m - Integral gain
 CTRL.Kd = 0;                                    %   rad/(m/s^2) - Derivative gain
 CTRL.tau = .1;                                  %   Filter time constant
-CTRL.K1 = -1;                                    %   rad/rad - Feedback gain on orientation 
-CTRL.K2 = -1;                                    %   rad/(rad/s) - Feedback gain on rotation rate
+CTRL.K1 = 1;                                    %   rad/rad - Feedback gain on orientation 
+CTRL.K2 = 1;                                    %   rad/(rad/s) - Feedback gain on rotation rate
 
 %%  Run Simulation
 sim('TVC_Model');
@@ -69,7 +69,7 @@ sim('TVC_Model');
 %%  Save Results
 Computer = 1;
 run Log_Results
-run get_filename
+run getFilename
 save(strcat(parent,'\',filename),'Sim')
 
 %%  Plots
