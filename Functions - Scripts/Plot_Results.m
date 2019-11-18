@@ -64,7 +64,8 @@ ylabel('Aero [N]');
 ax = gca;    ax.FontSize = 12;
 subplot(3,3,7)
 hold on;    grid on;
-plot(Sim.time,Sim.Z_thrust-Sim.F_drag-Sim.Z_grav,'c-')
+plot(Sim.time,Sim.Z_thrust-Sim.F_drag-Sim.Z_grav+Sim.Norm,'c-')
+% plot(Sim.time,Sim.Z_thrust-Sim.F_drag-Sim.Z_grav,'c-')
 plot(Sim.time,Sim.Y_thrust+Sim.F_side-Sim.Y_grav,'m-')
 xlim([0 tFinal]);
 xlabel('Time [s]'); ylabel('$\sum F$ [N]');

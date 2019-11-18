@@ -28,6 +28,7 @@ Sim.T_aero = Dist_out.signals.values(:,8);
 Sim.F_grav = Dist_out.signals.values(:,9);
 Sim.Z_grav = Dist_out.signals.values(:,10);
 Sim.Y_grav = Dist_out.signals.values(:,11);
+Sim.Norm = Dist_out.signals.values(:,12);
 
 Sim.delta = ACT_out.signals.values(:,1);
 Sim.Sat_diff = ACT_out.signals.values(:,2);
