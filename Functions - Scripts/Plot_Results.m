@@ -1,8 +1,9 @@
 %%
 % tFinal = Sim.time(end);
-tF = 8;
+tF = 4;
 V_W = round((ENV.v_w0+ENV.v_wf)/2/.447);
-idx = find(Sim.time == tF,1,'first');
+% idx = find(Sim.time == tF,1,'first');
+idx = length(Sim.time);
 %%  Plot translational states
 figure()
 subplot(3,3,2)

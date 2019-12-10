@@ -30,7 +30,7 @@ Motor.k_m = 1.0;                                %   Motor variance constant
 %%   Rocket Parameters
 VEH.m_lb = 2;                                   %   lb - Launch vehicle's unloaded mass
 VEH.m = VEH.m_lb*0.453592;                      %   kg - Launch vehicle's unloaded mass
-VEH.C_d = .35;                                  %   Coefficient of drag
+VEH.C_d = .46;                                  %   Coefficient of drag
 VEH.C_s = .5;                                   %   Coefficient of side force
 VEH.L = 37*.0254;                               %   in -> m - Rocket length
 VEH.D = 3.1*.0254;                              %   in -> m - Major airframe diameter
@@ -62,6 +62,14 @@ CTRL.Kd = 0;                                    %   rad/(m/s^2) - Derivative gai
 CTRL.tau = .1;                                  %   Filter time constant
 CTRL.K1 = 1;                                    %   rad/rad - Feedback gain on orientation 
 CTRL.K2 = 1;                                    %   rad/(rad/s) - Feedback gain on rotation rate
+
+%%  Linearized Model
+LIN.A = [];
+LIN.B = [13.84/VEH.m 0 6.94*VEH.C_d*VEH.A_ref*ENV.rho_b/VEH.m
+    0 1/VEH.m 0
+    13.84*(VEH.L-mean([VEH.CG_1 VEH.CG_2]))/VEH.J 0 6.94*VEH.C_d*VEH.A_ref*ENV.rho_b*(-VEH.CP+mean([VEH.CG_1 VEH.CG_2]))/VEH.J];
+LIN.C = [0 0 1 0 0 0;0 0 0 0 1 0;0 0 0 0 0 1];
+LIN.D = zeros(3);
 
 %%  Run Simulation
 sim('TVC_Model');
