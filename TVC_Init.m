@@ -55,7 +55,7 @@ SENS.kn_alt = .01;                              %   Altimeter noise constant
 SENS.kn_accel = .05;                            %   Accelerometer noise constant
 
 %%  Controller Settings
-CTRL.k_s = 2;                                   %   Control switch  1 = off  2 = closed-loop  3 = open-loop 
+CTRL.k_s = 3;                                   %   Control switch  1 = off  2 = closed-loop  3 = open-loop 
 CTRL.Kp = .25;                                  %   rad/(m/s) - Proportional gain
 CTRL.Ki = .1;                                   %   rad/m - Integral gain
 CTRL.Kd = 0;                                    %   rad/(m/s^2) - Derivative gain
@@ -64,10 +64,14 @@ CTRL.K1 = 1;                                    %   rad/rad - Feedback gain on o
 CTRL.K2 = 1;                                    %   rad/(rad/s) - Feedback gain on rotation rate
 
 %%  Linearized Model
-LIN.A = [];
-LIN.B = [13.84/VEH.m 0 6.94*VEH.C_d*VEH.A_ref*ENV.rho_b/VEH.m
+LIN.A = [-6.94*VEH.C_s*VEH.A_side*ENV.rho_b/VEH.m 0 -8 0 0 0
+    0 -8*VEH.C_d*VEH.A_ref*ENV.rho_b/VEH.m 2 0 0 0
+    -6.94*VEH.C_s*VEH.A_side*ENV.rho_b*(-VEH.CP+mean([VEH.CG_1 VEH.CG_2]))/VEH.J 0 0 0 0 0
+    1 0 0 0 0 -8;0 1 0 0 0 2;0 0 1 0 0 0];
+LIN.B = [13.84/VEH.m 0 6.94*VEH.C_s*VEH.A_side*ENV.rho_b/VEH.m
     0 1/VEH.m 0
-    13.84*(VEH.L-mean([VEH.CG_1 VEH.CG_2]))/VEH.J 0 6.94*VEH.C_d*VEH.A_ref*ENV.rho_b*(-VEH.CP+mean([VEH.CG_1 VEH.CG_2]))/VEH.J];
+    13.84*(VEH.L-mean([VEH.CG_1 VEH.CG_2]))/VEH.J 0 6.94*VEH.C_s*VEH.A_side*ENV.rho_b*(-VEH.CP+mean([VEH.CG_1 VEH.CG_2]))/VEH.J
+    0 0 0;0 0 0;0 0 0];
 LIN.C = [0 0 1 0 0 0;0 0 0 0 1 0;0 0 0 0 0 1];
 LIN.D = zeros(3);
 

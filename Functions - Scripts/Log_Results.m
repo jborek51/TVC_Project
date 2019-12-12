@@ -31,6 +31,8 @@ Sim.Y_grav = Dist_out.signals.values(:,11);
 Sim.Norm = Dist_out.signals.values(:,12);
 
 Sim.delta = ACT_out.signals.values(:,1);
+Sim.SFB = CTRL_out.signals.values(:,1);
+Sim.MPC = CTRL_out.signals.values(:,2);
 Sim.Sat_diff = ACT_out.signals.values(:,2);
 Sim.V_app = V_app;
 Sim.V_a = V_a;
