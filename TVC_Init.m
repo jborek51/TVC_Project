@@ -55,7 +55,7 @@ SENS.kn_alt = .01;                              %   Altimeter noise constant
 SENS.kn_accel = .05;                            %   Accelerometer noise constant
 
 %%  Controller Settings
-CTRL.k_s = 3;                                   %   Control switch  1 = off  2 = closed-loop  3 = open-loop 
+CTRL.k_s = 2;                                   %   Control switch:  1 = off;  2 = SFB;  3 = MPC
 CTRL.Kp = .25;                                  %   rad/(m/s) - Proportional gain
 CTRL.Ki = .1;                                   %   rad/m - Integral gain
 CTRL.Kd = 0;                                    %   rad/(m/s^2) - Derivative gain
