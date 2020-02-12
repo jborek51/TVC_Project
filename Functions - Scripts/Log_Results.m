@@ -6,9 +6,9 @@ Sim.Z_dot_veh = VEH_out.signals.values(:,8);
 Sim.Y_veh = VEH_out.signals.values(:,5);
 Sim.Y_dot_veh = VEH_out.signals.values(:,7);
 % Sim.Y_ddot_veh = VEH_out.signals.values(:,6);
-Sim.theta_veh = VEH_out.signals.values(:,11)*180/pi;
-Sim.theta_dot_veh = VEH_out.signals.values(:,10)*180/pi;
-Sim.theta_ddot_veh = VEH_out.signals.values(:,9)*180/pi;
+Sim.phi_veh = VEH_out.signals.values(:,11)*180/pi;
+Sim.p_veh = VEH_out.signals.values(:,10)*180/pi;
+Sim.p_dot_veh = VEH_out.signals.values(:,9)*180/pi;
 
 % Sim.Z_b = VEH_out.signals.values(:,10);
 Sim.Z_dot_b = VEH_out.signals.values(:,2);

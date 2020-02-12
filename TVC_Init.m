@@ -20,7 +20,7 @@ ENV.v_w0 = 20*.447;                             %   mph - Wind velocity at groun
 ENV.v_wf = 20*.447;                             %   mph - Wind velocity at 5000 ft
 ENV.z_0 = 0;                                    %   m - Initial altitude above sea level
 ENV.z_r = 36*.0254;                             %   in -> m - Rail length
-ENV.theta_0 = 0*pi/180;                         %   deg -> rad - Launch angle off of vertical
+ENV.phi_0 = 0*pi/180;                           %   deg -> rad - Launch angle off of vertical
 ENV.t_f = 50;                                   %   s - Simulation end time
 
 %%  Load Motor Parameters
@@ -39,7 +39,7 @@ VEH.A_side = VEH.L*VEH.D;                       %   m^2 - Side force reference a
 VEH.CG_1 = 21.70*.0254;                         %   in -> m - Center of gravity on pad
 VEH.CG_2 = 17.60*.0254;                         %   in -> m - Center of gravity after burnout
 VEH.L2 = VEH.CG_1 - VEH.CG_2;                   %   m - Change in CG position 
-VEH.CP = 17.78*.0254;                           %   in -> m - Center of Pressure
+VEH.CP = 19.78*.0254;                           %   in -> m - Center of Pressure
 VEH.J = .0625*VEH.m*VEH.D^2+1/12*VEH.m*VEH.L^2; %   kg.m^2 - Polar moment of inertia
 
 %%  Actuator Parameters
@@ -79,7 +79,7 @@ LIN.D = zeros(3);
 sim('TVC_Model');
 
 %%  Save Results
-Computer = 1;
+Computer = 2;
 run Log_Results
 run getFilename
 save(strcat(parent,'\',filename),'Sim')
